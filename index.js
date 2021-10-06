@@ -14,7 +14,7 @@ const stopBtn = document.querySelector('button[data-action="stop"]');
 console.log(startBtn);
 
 const timer = {
-  isActive: null,
+  isActive: false,
   intervalId: null,
 
   start() {
@@ -35,7 +35,7 @@ const timer = {
 
   stop() {
     clearInterval(intervalId);
-    this.isActive = null;
+    this.isActive = false;
     console.log(this.isActive);
   },
 };
