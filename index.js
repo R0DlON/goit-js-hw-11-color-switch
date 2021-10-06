@@ -14,30 +14,28 @@ const stopBtn = document.querySelector('button[data-action="stop"]');
 console.log(startBtn);
 
 const timer = {
-  isActive: false,
+  isActive: null,
   intervalId: null,
 
   start() {
-    if (this.isActive === true) {
-      return;
+    if (!this.isActive === true) {
+      const randomIntegerFromInterval = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      };
+      const changeBckgrndColor = () => {
+        return (document.body.style.backgroundColor =
+          colors[randomIntegerFromInterval(0, colors.length - 1)]);
+      };
+      intervalId = setInterval(changeBckgrndColor, 1000);
+      this.isActive = true;
+      console.log(this.isActive);
     }
-
-    const randomIntegerFromInterval = (min, max) => {
-      return Math.floor(Math.random() * (max - min + 1) + min);
-    };
-    const changeBckgrndColor = () => {
-      return (document.body.style.backgroundColor =
-        colors[randomIntegerFromInterval(0, colors.length - 1)]);
-    };
-
-    this.isActive = true;
-    intervalId = setInterval(changeBckgrndColor, 1000);
-    console.log(this.isActive);
+    return;
   },
 
   stop() {
     clearInterval(intervalId);
-    this.isActive = false;
+    this.isActive = null;
     console.log(this.isActive);
   },
 };
