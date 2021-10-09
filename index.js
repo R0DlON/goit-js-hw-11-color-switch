@@ -28,6 +28,7 @@ const timer = {
       };
       intervalId = setInterval(changeBckgrndColor, 1000);
       this.isActive = true;
+      startBtn.setAttribute("disabled", "true");
       console.log(this.isActive);
     }
     return;
@@ -36,7 +37,9 @@ const timer = {
   stop() {
     clearInterval(intervalId);
     this.isActive = false;
+    startBtn.removeAttribute("disabled");
     console.log(this.isActive);
+    return;
   },
 };
 
